@@ -27,7 +27,21 @@ public class Fibonacci {
         return result.toString().trim();
     }
 
-    
+    public static String generadorOpcionvd(int n) {   //opcion vd
+        StringBuilder result = new StringBuilder("fibo<" + n + ">:\n");
+        for (int i = 0; i < n; i++) {
+            result.append(fibo(i)).append("\n");
+        }
+        return result.toString();
+    }
+
+    public static String generadorOpcionvi(int n) {   //opcion vi
+        StringBuilder result = new StringBuilder("fibo<" + n + ">:\n");
+        for (int i = n - 1; i >= 0; i--) {
+            result.append(fibo(i)).append("\n");
+        }
+        return result.toString();
+    }
 
     public static String generadorOutput(char orientacion, char direccion, int n) { // Genera la salida en base a las opciones especificadas
         String output = "";
@@ -41,7 +55,16 @@ public class Fibonacci {
                 } else {
                     output = "Opciones no validas.";
                 }
-                break;           
+                break;
+            case 'v':
+                if (direccion == 'd') {
+                    output = generadorOpcionvd(n);
+                } else if (direccion == 'i') {
+                    output = generadorOpcionvi(n);
+                } else {
+                    output = "Opciones no validas.";
+                }
+                break;
             default:
                 output = "Opciones no validas.";
                 break;
