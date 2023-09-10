@@ -2,6 +2,9 @@ package ar.edu.untref.dyasc;
 
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FibonacciTest {
 
@@ -43,6 +46,24 @@ public class FibonacciTest {
         String[] args = { "8" };
         String result = SimuladorDeEjecucion.capturarOutput(args);
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    public void testSalidaArchivo() throws IOException {
+        String expectedOutput = "fibo<5> guardado en salida";
+        String[] args = { "-o=vd", "-f=salida", "5" };
+        String consoleOutput = SimuladorDeEjecucion.capturarOutput(args);
+        
+        // Verificar que el mensaje de consola sea el esperado
+        assertThat(consoleOutput).isEqualTo(expectedOutput);
+
+        // Verificar que el contenido del archivo generado sea el esperado
+        String archivoGenerado = new String(Files.readAllBytes(Paths.get("salida")));
+        String expectedArchivo = "fibo<5>:\n0\n1\n1\n2\n3\n";
+        assertThat(archivoGenerado).isEqualTo(expectedArchivo);
+        
+        // Eliminar el archivo generado después de la prueba
+        Files.deleteIfExists(Paths.get("salida"));
     }
     
 }
