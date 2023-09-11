@@ -2,9 +2,9 @@ package ar.edu.untref.dyasc;
 
 public class Formateador {
     public static String formateadorFibonacci(Argumentos argumentos) {
-        if (argumentos.getModoFuncionamiento() == Opcion.LISTA.getValorChar()) {
+        if (argumentos.getModoFuncionamiento() == CST.LISTA.getChar()) {
             return formateadorLista(argumentos);            
-        } else if (argumentos.getModoFuncionamiento() == Opcion.SUMATORIA.getValorChar()) {
+        } else if (argumentos.getModoFuncionamiento() == CST.SUMATORIA.getChar()) {
             return formateadorSumatoria(argumentos);            
         } else {
             return "Modo de funcionamiento no valido.";       
@@ -12,16 +12,16 @@ public class Formateador {
     }
 
     private static String formateadorLista(Argumentos argumentos) {
-        if (argumentos.getOrientacion() == Opcion.ORIENTACION_HORIZONTAL.getValorChar()) {
-            if (argumentos.getDireccion() == Opcion.DIRECCION_DIRECTA.getValorChar()) {
+        if (argumentos.getOrientacion() == CST.ORIENTACION_HORIZONTAL.getChar()) {
+            if (argumentos.getDireccion() == CST.DIRECCION_DIRECTA.getChar()) {
                 return generadorOpcionhd(argumentos); //Horizontal Directa
-            } else if (argumentos.getDireccion() == Opcion.DIRECCION_INVERSA.getValorChar()) {
+            } else if (argumentos.getDireccion() == CST.DIRECCION_INVERSA.getChar()) {
                 return generadorOpcionhi(argumentos); //Horizontal Inversa
             }
-        } else if (argumentos.getOrientacion() == Opcion.ORIENTACION_VERTICAL.getValorChar()) {
-            if (argumentos.getDireccion() == Opcion.DIRECCION_DIRECTA.getValorChar()) {
+        } else if (argumentos.getOrientacion() == CST.ORIENTACION_VERTICAL.getChar()) {
+            if (argumentos.getDireccion() == CST.DIRECCION_DIRECTA.getChar()) {
                 return generadorOpcionvd(argumentos); //Vertical Directa
-            } else if (argumentos.getDireccion() == Opcion.DIRECCION_INVERSA.getValorChar()) {
+            } else if (argumentos.getDireccion() == CST.DIRECCION_INVERSA.getChar()) {
                 return generadorOpcionvi(argumentos); //Vertical Inversa
             }
         }       
@@ -30,9 +30,9 @@ public class Formateador {
 
     private static String formateadorSumatoria(Argumentos argumentos) {
         int sumatoria = Fibonacci.fiboSumatoria(argumentos.getN());
-        if (argumentos.getOrientacion() == Opcion.ORIENTACION_HORIZONTAL.getValorChar()) {
+        if (argumentos.getOrientacion() == CST.ORIENTACION_HORIZONTAL.getChar()) {
             return "fibo<" + argumentos.getN() + ">s: " + sumatoria;
-        } else if (argumentos.getOrientacion() == Opcion.ORIENTACION_VERTICAL.getValorChar()) {
+        } else if (argumentos.getOrientacion() == CST.ORIENTACION_VERTICAL.getChar()) {
             return "fibo<" + argumentos.getN() + ">s:\n" + sumatoria;
         } else {
             return "Opciones no validas.";
