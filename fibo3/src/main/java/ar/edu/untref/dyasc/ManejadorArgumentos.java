@@ -6,19 +6,19 @@ import java.util.Map;
 public class ManejadorArgumentos {
 
     public static Argumentos obtenerArgumentos(String[] args) throws IllegalArgumentException {
-        String opciones = CST.DEFAULT_OPCIONES.getString();
+        String opciones = CST.DEFAULT_OPCION_FORMATEO.getString();
         int n = 0;
-        char modoFuncionamiento = CST.DEFAULT_MODO_FUNCIONAMIENTO.getChar(); 
+        char modoFuncionamiento = CST.DEFAULT_OPCION_MODO_FUNCIONAMIENTO.getChar(); 
         Map<String, String> opcionesArchivo = new HashMap<>();
         int cantidadArgumentosN = 0; // Contador de argumentos n
 
         for (String arg : args) {
-            if (arg.startsWith(CST.FORMATEO.getString())) {
+            if (arg.startsWith(CST.OPCION_FORMATEO.getString())) {
                 opciones = arg.substring(3);
-            } else if (arg.startsWith(CST.ARCHIVO.getString())) {
+            } else if (arg.startsWith(CST.OPCION_ARCHIVO.getString())) {
                 String nombreArchivo = arg.substring(3);
                 opcionesArchivo.put(CST.ARCHIVOKEY.getString(), nombreArchivo);
-            } else if (arg.startsWith(CST.MODO_FUNCIONAMIENTO.getString())) {
+            } else if (arg.startsWith(CST.OPCION_MODO_FUNCIONAMIENTO.getString())) {
                 modoFuncionamiento = arg.charAt(3);
             } else {
                 cantidadArgumentosN++;

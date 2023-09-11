@@ -11,14 +11,14 @@ public class Validacion {
     }
 
     public static void validarOpciones(String opciones) throws IllegalArgumentException {
-        if (!opciones.equals(CST.OPCION_HORIZONTAL_DIRECTA.getString()) && !opciones.equals(CST.OPCION_HORIZONTAL_INVERSA.getString())
-        && !opciones.equals(CST.OPCION_VERTICAL_INVERSA.getString()) && !opciones.equals(CST.OPCION_VERTICAL_DIRECTA.getString())) {
+        if (!opciones.equals(CST.HORIZONTAL_DIRECTA.getString()) && !opciones.equals(CST.HORIZONTAL_INVERSA.getString())
+        && !opciones.equals(CST.VERTICAL_INVERSA.getString()) && !opciones.equals(CST.VERTICAL_DIRECTA.getString())) {
             throw new IllegalArgumentException("Opciones no validas.");
         }        
     }    
 
     public static void validarModoFuncionamiento(char modo) throws IllegalArgumentException {
-        if (modo != CST.LISTA.getChar() && modo != CST.SUMATORIA.getChar()) {
+        if (modo != CST.MODO_LISTA.getChar() && modo != CST.MODO_SUMATORIA.getChar()) {
             throw new IllegalArgumentException("Modo de funcionamiento no valido.");
         }
     }

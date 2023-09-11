@@ -2,9 +2,9 @@ package ar.edu.untref.dyasc;
 
 public class Formateador {
     public static String formateadorFibonacci(Argumentos argumentos) {
-        if (argumentos.getModoFuncionamiento() == CST.LISTA.getChar()) {
+        if (argumentos.getModoFuncionamiento() == CST.MODO_LISTA.getChar()) {
             return formateadorLista(argumentos);            
-        } else if (argumentos.getModoFuncionamiento() == CST.SUMATORIA.getChar()) {
+        } else if (argumentos.getModoFuncionamiento() == CST.MODO_SUMATORIA.getChar()) {
             return formateadorSumatoria(argumentos);            
         } else {
             return "Modo de funcionamiento no valido.";       
