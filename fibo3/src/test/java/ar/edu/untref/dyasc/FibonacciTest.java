@@ -50,20 +50,62 @@ public class FibonacciTest {
 
     @Test
     public void testSalidaArchivo() throws IOException {
-        String expectedOutput = "fibo<5> guardado en salida";
-        String[] args = { "-o=vd", "-f=salida", "5" };
+        String expectedOutput = "fibo<5> guardado en salida.txt";
+        String[] args = { "-o=vd", "-f=salida.txt", "5" };
         String consoleOutput = SimuladorDeEjecucion.capturarOutput(args);
         
         // Verificar que el mensaje de consola sea el esperado
         assertThat(consoleOutput).isEqualTo(expectedOutput);
 
         // Verificar que el contenido del archivo generado sea el esperado
-        String archivoGenerado = new String(Files.readAllBytes(Paths.get("salida")));
+        String archivoGenerado = new String(Files.readAllBytes(Paths.get("salida.txt")));
         String expectedArchivo = "fibo<5>:\n0\n1\n1\n2\n3\n";
         assertThat(archivoGenerado).isEqualTo(expectedArchivo);
         
         // Eliminar el archivo generado después de la prueba
-        Files.deleteIfExists(Paths.get("salida"));
+        Files.deleteIfExists(Paths.get("salida.txt"));
     }
-    
+
+    @Test
+    public void testModoS() {
+        String expected = "fibo<5>s: 7";
+        String[] args = { "-o=hd", "-m=s", "5" };
+        String result = SimuladorDeEjecucion.capturarOutput(args);
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    public void testSalidaArchivoConModoS() throws IOException {
+        String expectedOutput = "fibo<5> guardado en salida.txt";
+        String[] args = { "-o=vd", "-f=salida.txt", "-m=s", "5" };
+        String consoleOutput = SimuladorDeEjecucion.capturarOutput(args);
+        
+        // Verificar que el mensaje de consola sea el esperado
+        assertThat(consoleOutput).isEqualTo(expectedOutput);
+
+        // Verificar que el contenido del archivo generado sea el esperado
+        String archivoGenerado = new String(Files.readAllBytes(Paths.get("salida.txt")));
+        String expectedArchivo = "fibo<5>s:\n7";
+        assertThat(archivoGenerado).isEqualTo(expectedArchivo);
+        
+        // Eliminar el archivo generado después de la prueba
+        Files.deleteIfExists(Paths.get("salida.txt"));
+    }
+
+    @Test
+    public void testModoInvalido() {
+        String expected = "Modo de funcionamiento no valido.";
+        String[] args = { "-o=hd", "-m=i", "5" };
+        String result = SimuladorDeEjecucion.capturarOutput(args);
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    public void testNumeroEntero() {
+        String expected = "El argumento debe ser un número entero.";
+        String[] args = { "-o=hd", "-m=l", "5.8" };
+        String result = SimuladorDeEjecucion.capturarOutput(args);
+        assertThat(result).isEqualTo(expected);
+    }
+
 }

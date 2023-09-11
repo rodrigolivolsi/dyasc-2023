@@ -7,12 +7,12 @@ public class Ejecutable {
             Validacion.validarArgumentos(args);
             Argumentos argumentos = ManejadorArgumentos.obtenerArgumentos(args);
 
-            if (argumentos.opcionesArchivo.containsKey("-f")) {
-                String nombreArchivo = argumentos.opcionesArchivo.get("-f");
-                String output = Formateador.formateadorFibonacci(argumentos.n, argumentos.orientacion, argumentos.direccion);
-                GuardarArchivo.guardarEnArchivo(nombreArchivo, output, argumentos.n);
+            String output = Formateador.formateadorFibonacci(argumentos);
+
+            String nombreArchivo = argumentos.getNombreArchivo();
+            if (nombreArchivo != null) {
+                GuardarArchivo.guardarEnArchivo(nombreArchivo, output, argumentos.getN());
             } else {
-                String output = Formateador.formateadorFibonacci(argumentos.n, argumentos.orientacion, argumentos.direccion);
                 System.out.println(output);
             }
         } catch (IllegalArgumentException e) {

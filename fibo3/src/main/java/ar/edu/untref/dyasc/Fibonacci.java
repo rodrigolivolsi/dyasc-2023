@@ -11,5 +11,14 @@ public class Fibonacci {
             return fibo(n - 1) + fibo(n - 2);
         }
     }
+    public static int fiboSumatoria(int n) {
+        int sumatoria = 0;
+
+        for (int i = 0; i < n; i++) {
+            sumatoria += fibo(i);
+        }
+
+        return sumatoria;
+    }
     
 }
