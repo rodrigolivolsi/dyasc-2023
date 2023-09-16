@@ -1,20 +1,19 @@
 package ar.edu.untref.dyasc;
 
-import java.util.Map;
 
 public class Argumentos {
     private final int n;
     private final char orientacion;
     private final char direccion;
     private final char modoFuncionamiento;
-    private final Map<String, String> opcionesArchivo;
+    private final String NombreArchivo;
 
-    public Argumentos(int n, char orientacion, char direccion, char modoFuncionamiento, Map<String, String> opcionesArchivo) {
+    public Argumentos(int n, char orientacion, char direccion, char modoFuncionamiento, String NombreArchivo) {
         this.n = n;
         this.orientacion = orientacion;
         this.direccion = direccion;
         this.modoFuncionamiento = modoFuncionamiento;
-        this.opcionesArchivo = opcionesArchivo;
+        this.NombreArchivo = NombreArchivo;
     }
 
     public int getN() {
@@ -33,13 +32,8 @@ public class Argumentos {
         return modoFuncionamiento;
     }
 
-    public Map<String, String> getOpcionesArchivo() {
-        return opcionesArchivo;
-    }
-    
-    // Método para obtener el archivo (si es que se proporciona)
     public String getNombreArchivo() {
-        return this.opcionesArchivo.get("-f");
+        return NombreArchivo;
     }
     
 }

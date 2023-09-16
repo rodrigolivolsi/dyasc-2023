@@ -4,7 +4,6 @@ public enum CST {
     OPCION_FORMATEO("-o="),
     OPCION_ARCHIVO("-f="),
     OPCION_MODO_FUNCIONAMIENTO("-m="),
-    ARCHIVOKEY(OPCION_ARCHIVO.getString().substring(0, OPCION_ARCHIVO.getString().length() - 1)), //"-f"
     MODO_LISTA("l"),
     MODO_SUMATORIA("s"),    
     ORIENTACION_HORIZONTAL("h"),
